@@ -1,0 +1,434 @@
+html {
+  scroll-behavior: smooth; /* Añadido para desplazamiento suave */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.5s ease;
+  overflow-x: hidden; /* Evita el desbordamiento horizontal */
+}
+
+header {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://i.imgur.com/DUG6jfk.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll; /* La imagen de fondo se mueve con el contenido */
+}
+
+#logo {
+  width: 150px; /* Tamaño mediano */
+  height: auto;
+  position: absolute;
+  left: -640px;
+  top: -10px;
+}
+
+.header-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.overlay-image {
+  width: 1070px; /* Tamaño fijo */
+  height: auto;
+}
+
+.header-top {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+#cartIconContainer {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+#cartIcon {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+}
+
+#cartCount {
+  background-color: #858179;
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 6px;
+  margin-left: 5px;
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  transition: transform 0.5s ease-in-out;
+  margin-left: 130px; /* Alineado con el logo */
+  flex-wrap: nowrap; /* Evita que el nav se rompa en filas */
+  overflow: hidden; /* Oculta el desbordamiento */
+  white-space: nowrap; /* Evita el desbordamiento de texto */
+  z-index: 1; /* Asegura que las ventanas modales estén encima */
+}
+
+nav a {
+  color: #fff;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em; /* Tamaño de fuente ajustado */
+}
+
+nav a:hover {
+  color: #ff6347;
+}
+
+.auth-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.auth-button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.auth-button:hover {
+  color: #ff6347;
+}
+
+.separator {
+  color: #fff;
+  margin: 0 5px;
+  font-weight: bold;
+}
+
+.modal,
+.cart-modal {
+  display: none;
+  position: fixed;
+  z-index: 3; /* Asegura que esté encima de todo */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content,
+.cart-modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  height: 80vh;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0 auto;
+  @media (max-width: 768px) {
+    .modal-content,
+    .cart-modal-content {
+      width: 95%; /* Aumenta el ancho para dispositivos móviles */
+      max-width: 100%; /* Permite que el modal ocupe todo el ancho disponible */
+      height: auto; /* Ajusta la altura automáticamente */
+      max-height: 70vh; /* Limita la altura a un 70% de la ventana */
+      padding: 15px; /* Reduce el padding en pantallas más pequeñas */
+    }
+  }
+
+  /* Media Query para pantallas muy pequeñas (móviles) */
+  @media (max-width: 480px) {
+    .modal-content,
+    .cart-modal-content {
+      width: 100%; /* Asegura que el modal ocupe todo el ancho de la pantalla */
+      padding: 10px; /* Reduce más el padding */
+      height: auto; /* Ajuste automático en la altura */
+      max-height: 60vh; /* Ajusta la altura en pantallas aún más pequeñas */
+    }
+  }
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: row;
+}
+
+.img-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+  position: relative;
+
+  transform: translateY(-10px);
+}
+
+.modal-content img {
+  width: auto;
+  height: auto;
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
+
+.modal-content img.zoomed {
+  transform: scale(2);
+  cursor: zoom-out;
+}
+
+.product-details {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+}
+
+.close {
+  color: #aaa;
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+#products {
+  margin-top: 0;
+  text-align: center;
+  position: relative;
+}
+
+.products-header {
+  background-image: url("https://i.imgur.com/5B6afyX.jpeg"); /* Imagen de fondo para el encabezado de productos */
+  background-size: cover;
+  background-position: center;
+  padding: 40px 0;
+  position: relative;
+  mask-image: linear-gradient(to bottom, black 80%, transparent);
+}
+
+.products-header h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 2em;
+  position: relative; /* Asegura que esté sobre la imagen de fondo */
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+  padding: 20px;
+}
+
+.product {
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.product h3 {
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+
+.product p {
+  color: #555;
+}
+
+.product button {
+  padding: 10px 20px;
+  background-color: #ff6347;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.product button:hover {
+  background-color: #e55347;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+}
+
+.additional-images {
+  display: flex;
+  gap: 5px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.additional-images img {
+  max-width: 100px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.additional-images img:hover {
+  transform: scale(1.1);
+}
+
+#about {
+  padding: 50px 20px;
+  background-color: #fff;
+  text-align: center;
+  background-image: url("https://i.imgur.com/ADq3lRf.png"); /* Imagen de fondo para el apartado Acerca de Nosotros */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Fondo blanco semitransparente para el contenido */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.about-section {
+  margin-bottom: 30px;
+}
+
+.about-section h3 {
+  color: #ff6347;
+  font-size: 1.5em;
+}
+
+.about-section p,
+.about-section ul {
+  font-size: 1em;
+  color: #555;
+}
+
+.about-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.about-section li {
+  margin-bottom: 10px;
+}
+
+.cta-link {
+  color: #ff6347;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.whatsapp-button img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.whatsapp-button img:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+  #logo {
+    width: 120px;
+    left: -250px;
+    top: 0;
+  }
+  nav {
+    margin-left: 100px;
+  }
+  .products-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .product {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .modal-body {
+    flex-direction: column;
+  }
+  .modal-content img {
+    width: 100%;
+    height: auto;
+  }
+}

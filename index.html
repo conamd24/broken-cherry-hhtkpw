@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página de Compras</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-top">
+        <img src="https://i.imgur.com/rO6EPVz.png" alt="Logo" id="logo" />
+        <nav>
+          <a href="#home">Inicio</a>
+          <a href="#products">Productos</a>
+          <a href="#about">Acerca de</a>
+          <div class="auth-buttons">
+            <a href="#" id="logInButton" class="auth-button">Log In</a>
+            <span class="separator">/</span>
+            <a href="#" id="signUpButton" class="auth-button">Sign Up</a>
+          </div>
+        </nav>
+        <div id="cartIconContainer" onclick="openCartModal()">
+          <svg
+            id="cartIcon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 4V2a2 2 0 1 1 4 0v2h2V2a2 2 0 1 1 4 0v2h5v2h-1l-1.404 14.175A4 4 0 0 1 15.621 22H8.379a4 4 0 0 1-3.975-3.825L3 6H2V4h5zM5.404 6l1.172 11.825A2 2 0 0 0 8.379 20h7.242a2 2 0 0 0 1.803-2.175L18.596 6H5.404zM9 2v2h2V2a1 1 0 1 0-2 0zm6 0v2h2V2a1 1 0 1 0-2 0z"
+            />
+          </svg>
+          <span id="cartCount">0</span>
+        </div>
+      </div>
+      <div class="header-content">
+        <img
+          src="https://i.imgur.com/7A90l8d.png"
+          alt="Overlay Image"
+          class="overlay-image cuadros"
+        />
+      </div>
+    </header>
+    <main>
+      <section id="products">
+        <div class="products-header">
+          <h2>Productos</h2>
+        </div>
+        <div class="products-grid">
+          <div class="product" data-product="Producto 1">
+            <img
+              src="https://picsum.photos/300/200?random=1"
+              alt="Producto 1"
+            />
+            <h3>Producto 1</h3>
+            <p>Precio: $10.00</p>
+            <button data-product="Producto 1" data-price="10.00">
+              Agregar al carrito
+            </button>
+          </div>
+          <div class="product" data-product="Producto 2">
+            <img
+              src="https://picsum.photos/300/200?random=2"
+              alt="Producto 2"
+            />
+            <h3>Producto 2</h3>
+            <p>Precio: $15.00</p>
+            <button data-product="Producto 2" data-price="15.00">
+              Agregar al carrito
+            </button>
+          </div>
+          <div class="product" data-product="Producto 3">
+            <img
+              src="https://picsum.photos/300/200?random=3"
+              alt="Producto 3"
+            />
+            <h3>Producto 3</h3>
+            <p>Precio: $20.00</p>
+            <button data-product="Producto 3" data-price="20.00">
+              Agregar al carrito
+            </button>
+          </div>
+          <div class="product" data-product="Producto 4">
+            <img
+              src="https://picsum.photos/300/200?random=4"
+              alt="Producto 4"
+            />
+            <h3>Producto 4</h3>
+            <p>Precio: $25.00</p>
+            <button data-product="Producto 4" data-price="25.00">
+              Agregar al carrito
+            </button>
+          </div>
+        </div>
+      </section>
+      <section id="about">
+        <h2>Acerca de Nosotros</h2>
+        <div class="about-content">
+          <div class="about-section">
+            <h3>1. Introducción</h3>
+            <p>
+              En <strong>EIKON</strong>, nos especializamos en la venta de
+              cuadros de aluminio de alta calidad, ideales para decorar espacios
+              modernos y darles un toque único. Ofrecemos productos elegantes y
+              duraderos, pensados para realzar tanto hogares como oficinas, con
+              un diseño contemporáneo que se adapta a cualquier estilo.
+            </p>
+          </div>
+          <div class="about-section">
+            <h3>2. Valores y Filosofía</h3>
+            <ul>
+              <li>
+                <strong>Calidad:</strong> Nos comprometemos a ofrecer solo los
+                mejores cuadros de aluminio, fabricados con materiales duraderos
+                que garantizan su resistencia y longevidad.
+              </li>
+              <li>
+                <strong>Innovación:</strong> Buscamos siempre las últimas
+                tendencias en diseño y tecnología, para que nuestros productos
+                sean visualmente atractivos y funcionales.
+              </li>
+              <li>
+                <strong>Sostenibilidad:</strong> Apostamos por un proceso de
+                producción responsable, utilizando materiales reciclables
+                siempre que sea posible, para contribuir con el cuidado del
+                medio ambiente.
+              </li>
+              <li>
+                <strong>Servicio al Cliente:</strong> Nos importa tu
+                satisfacción. Te acompañamos en todo el proceso, desde la
+                selección hasta la instalación, asegurándonos de que cada cuadro
+                se ajuste perfectamente a tus necesidades.
+              </li>
+            </ul>
+          </div>
+          <div class="about-section">
+            <h3>3. Llamado a la acción (CTA)</h3>
+            <p>
+              ¿Estás listo para transformar tu espacio con cuadros de aluminio
+              únicos?
+            </p>
+            <p>
+              <a href="#contact" class="cta-link">Contáctanos ahora</a> y
+              descubre nuestras colecciones. ¡Haz tu pedido hoy mismo y lleva la
+              elegancia a tu hogar o empresa!
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="contact">
+        <h2>Contacto</h2>
+        <p>Esta es la sección de contacto.</p>
+      </section>
+      <div id="productModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <div class="modal-body">
+            <div class="img-container" id="modalImage">
+              <img src="" alt="Imagen del Producto" id="mainImage" />
+            </div>
+            <div class="product-details">
+              <h2 id="productTitle"></h2>
+              <p id="productDescription"></p>
+              <p>
+                <strong>Precio: $<span id="productPrice"></span></strong>
+              </p>
+              <button id="modalAddToCartButton">Agregar al carrito</button>
+              <div id="additionalImages" class="additional-images"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="cartModal" class="cart-modal">
+        <div class="cart-modal-content">
+          <span class="close" onclick="closeCartModal()">&times;</span>
+          <div class="cart-modal-header">
+            <h2>Tu Carrito de Compras</h2>
+          </div>
+          <div class="cart-modal-body" id="cartItems"></div>
+          <div class="cart-modal-footer">
+            <p>
+              <strong>Total: $<span id="totalAmount">0.00</span></strong>
+            </p>
+            <button type="button" onclick="handleCheckout()">
+              Realizar Compra
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2025 Mi Página Web de Compras</p>
+    </footer>
+    <!-- Botón de WhatsApp -->
+    <a href="#" class="whatsapp-button" target="_blank" id="whatsappLink">
+      <img src="https://i.imgur.com/KiLu16n.png" alt="WhatsApp" />
+    </a>
+    <script src="env.js"></script>
+    <script src="scripts.js"></script>
+  </body>
+</html>
